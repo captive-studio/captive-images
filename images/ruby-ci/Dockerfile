@@ -1,4 +1,4 @@
-FROM cimg/ruby:4.0.1@sha256:3d2ef6af1a0b26e03b398cf48ffe54637c319bd0cd1d683321c4e2a42ca7cd1e
+FROM cimg/ruby:4.0.2@sha256:90f2756f90e5f94884e58a9012755bc6cd7a148e25498d405e02f00e6b500de4
 
 RUN sudo apt-get update && \
     sudo apt-get install -y --no-install-recommends \
