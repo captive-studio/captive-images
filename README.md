@@ -10,7 +10,8 @@ ___
 
 ### Ruby CI
 > Image ruby pour la configuration des déploiements.
-[📋 Documentation](https://github.com/Captive-Studio/captive-images/pkgs/container/ruby-ci)
+
+[🔖 Versions](https://github.com/Captive-Studio/captive-images/pkgs/container/ruby-ci)
 
 ___
 
@@ -44,3 +45,4 @@ Pour cela, rendez-vous dans les setting du package `https://github.com/orgs/Capt
 ### A noter : 
 Pour consommer votre package, il est préférable d'utiliser la version et non `latest` ou `sha-xxx` afin que Renovate tourne correctement dans votre projet cible.
 
+_Par exemple_: `ghcr.io/captive-studio/ruby-ci:4.0.2`
