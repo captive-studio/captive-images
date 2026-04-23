@@ -42,7 +42,22 @@ Configurer la publication de l'image :
 Rendre publique le package créé. A la première publication, il faut rendre publique le package et donc les images qu'il contient pour faciliter la récupération.
 Pour cela, rendez-vous dans les setting du package `https://github.com/orgs/Captive-Studio/packages/container/mon-image/settings` et définissez le package comme publique dans la `Danger zone`.
 
-### A noter : 
+
+### Etape 6
+
+Configurer renovate pour votre image :
+- Ajouter un fichier `preset.json` dans le dossier de votre image avec les règles renovate
+- Etendre ce preset dans la configuration renovate à la racine de ce projet
+- Ajouter votre image à la configuration renovate partagée dans le repo [renovate-config](https://github.com/Captive-Studio/renovate-config).
+
+> **A noter** : 
+  Il est important d'attendre moins longtemps après une release que la configuration de base de renovate afin de fournir une image de la version au moment ou renovate passera sur le projet utilisant l'image.
+  De la même manière il faut que votre image soit authorisée moins de temps après la release. 
+  _Par exemple_: si renovate-config attendait 3 jours après une release, alors votre preset doit attendre 1 jour et renovate-config doit attendre 2 jours pour votre image. Ainsi le comportement restera similaire.
+  
+___
+
+## Comsommer l'image : 
 Pour consommer votre package, il est préférable d'utiliser la version et non `latest` ou `sha-xxx` afin que Renovate tourne correctement dans votre projet cible.
 
 _Par exemple_: `ghcr.io/captive-studio/ruby-ci:4.0.2`

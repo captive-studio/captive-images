@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "description": "Update upstream Ruby faster in captive-images",
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["cimg/ruby"],
+      "minimumReleaseAge": "1 day",
+      "prCreation": "not-pending",
+      "internalChecksFilter": "strict"
+    }
+  ]
+}
