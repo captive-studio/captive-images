@@ -8,6 +8,11 @@ ___
 
 ## ![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)
 
+### Ruby
+> Image ruby pour la production.
+
+[🔖 Versions](https://github.com/Captive-Studio/captive-images/pkgs/container/ruby)
+
 ### Ruby CI
 > Image ruby pour la configuration des déploiements.
 
