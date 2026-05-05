@@ -1,4 +1,4 @@
-FROM ruby:4.0-slim
+FROM ruby:4.0.2-slim
 
 # Install base packages
 RUN apt-get update -qq && \
