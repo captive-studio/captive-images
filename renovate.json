@@ -4,5 +4,18 @@
     "github>Captive-Studio/renovate-config",
     "github>Captive-Studio/captive-images//images/ruby-ci/preset.json",
     "github>Captive-Studio/captive-images//images/ruby/preset.json"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [".*Aptfile$"],
+      "matchStrings": [
+        "^(?<depName>[a-z0-9\\-\\.]+?)=(?<currentValue>[^\\n]+)$"
+      ],
+      "datasourceTemplate": "repology",
+      "versioningTemplate": "debian",
+      "extractVersionTemplate": "^(?<version>.*)$",
+      "depTypeTemplate": "dependency"
+    }
   ]
 }
