@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - images/ruby-ci/Dockerfile
+      - images/ruby-ci/Aptfile
       - .github/workflows/publish-ruby-ci.yml
   workflow_dispatch:
 
