@@ -1,0 +1,19 @@
+# Build tools
+build-essential
+pkg-config
+
+# SQL Server client
+freetds-bin
+freetds-dev
+
+# Image processing libraries
+libheif-dev
+libjpeg-turbo8-dev
+libpng-dev
+libvips-dev
+
+# Database client
+libpq-dev
+
+# Network utilities
+netcat-openbsd

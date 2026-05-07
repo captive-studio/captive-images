@@ -1,0 +1,16 @@
+# HTTP utilities
+curl
+
+# Memory allocator optimization for Ruby
+libjemalloc2
+
+# Image processing libraries
+libvips42t64
+libheif1
+imagemagick
+
+# Database client
+postgresql-client
+
+# Timezone data for proper time handling
+tzdata
