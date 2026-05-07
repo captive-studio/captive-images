@@ -4,5 +4,5 @@ COPY Aptfile /tmp/Aptfile
 
 RUN sudo apt-get update && \
     sudo apt-get install -y --no-install-recommends \
-      $(cat /tmp/Aptfile | tr '\n' ' ') && \
+      $(grep -v '^#' /tmp/Aptfile | grep -v '^$' | tr '\n' ' ') && \
     sudo rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/Aptfile
