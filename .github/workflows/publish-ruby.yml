@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - images/ruby/Dockerfile
+      - images/ruby/Aptfile
       - .github/workflows/publish-ruby.yml
   workflow_dispatch:
 
