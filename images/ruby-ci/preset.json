@@ -6,7 +6,6 @@
       "matchDatasources": ["docker"],
       "matchDepNames": ["cimg/ruby"],
       "minimumReleaseAge": "1 day",
-      "prCreation": "not-pending",
       "internalChecksFilter": "strict"
     }
   ]
