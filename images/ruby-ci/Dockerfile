@@ -6,3 +6,15 @@ RUN sudo apt-get update && \
     sudo apt-get install -y --no-install-recommends \
       $(grep -v '^#' /tmp/Aptfile | grep -v '^$' | tr '\n' ' ') && \
     sudo rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/Aptfile
+
+COPY --chown=circleci:circleci \
+  images/ruby-ci/Gemfile \
+  images/ruby-ci/Gemfile.lock \
+  /tmp/ruby-ci-gems/
+
+RUN cd /tmp/ruby-ci-gems && \
+    bundle config set frozen true && \
+    bundle install && \
+    bundler-audit --version && \
+    rubocop --version && \
+    rm -rf /tmp/ruby-ci-gems
