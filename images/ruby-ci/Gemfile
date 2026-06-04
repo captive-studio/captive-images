@@ -1,0 +1,4 @@
+source "https://rubygems.org"
+
+gem "bundler-audit", "0.9.3", require: false
+gem "rubocop", "1.85.1", require: false
