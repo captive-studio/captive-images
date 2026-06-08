@@ -4,14 +4,13 @@ pkg-config
 
 # SQL Server client
 freetds-bin
-freetds-dev
 
 # Image processing libraries
-libde265-dev
-libheif-dev
-libjpeg-turbo8-dev
-libpng-dev
-libvips-dev
+libde265-2
+libheif1
+libjpeg-turbo8
+libpng16-16
+libvips42t64
 
 # Database client
 libpq-dev
