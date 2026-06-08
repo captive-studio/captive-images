@@ -7,7 +7,7 @@ libjemalloc2
 # Image processing libraries
 libvips42t64
 libheif1
-libde265-2
+libheif-plugin-libde265
 
 # Database client
 postgresql-client
