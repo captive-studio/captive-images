@@ -7,6 +7,8 @@ on:
     paths:
       - images/ruby-ci/Dockerfile
       - images/ruby-ci/Aptfile
+      - images/ruby-ci/Gemfile
+      - images/ruby-ci/Gemfile.lock
       - .github/workflows/publish-ruby-ci.yml
   workflow_dispatch:
 
