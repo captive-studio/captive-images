@@ -1,4 +1,4 @@
-FROM cimg/ruby:4.0.5@sha256:7452096215e3d00bf02fcc871bb6417f126698919fbee52ef114fb53033599ca
+FROM cimg/ruby:4.0.6@sha256:71eced1876e010aebe5350e8b6ef694808df7ffac3c60b4ca57cecb324b82979
 
 COPY images/ruby-ci/Aptfile /tmp/Aptfile
 
