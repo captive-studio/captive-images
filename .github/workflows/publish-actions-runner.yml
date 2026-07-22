@@ -15,10 +15,7 @@ env:
 
 jobs:
   publish:
-    # Bootstrap : le pool self-hosted est jammé par la taxe apt-get zstd que
-    # cette image corrige (deadlock poule/œuf). On build sur GitHub-hosted pour
-    # le premier build, puis on repasse à self-hosted une fois le pool assaini.
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: write
