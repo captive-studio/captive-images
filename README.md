@@ -11,12 +11,12 @@ ___
 ### Ruby
 > Image ruby pour la production.
 
-[🔖 Versions](https://github.com/Captive-Studio/captive-images/pkgs/container/ruby)
+[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/ruby)
 
 ### Ruby CI
 > Image ruby pour la configuration des déploiements.
 
-[🔖 Versions](https://github.com/Captive-Studio/captive-images/pkgs/container/ruby-ci)
+[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/ruby-ci)
 
 ### Actions Runner
 > Runner ARC (self-hosted GitHub Actions) basé sur `falcondev-oss/actions-runner`, avec `zstd` embarqué pour la compression du cache GitHub Actions. Évite l'installation de zstd au démarrage de chaque runner éphémère.
@@ -50,7 +50,7 @@ Configurer la publication de l'image :
 ### Etape 5
 
 Rendre publique le package créé. A la première publication, il faut rendre publique le package et donc les images qu'il contient pour faciliter la récupération.
-Pour cela, rendez-vous dans les setting du package `https://github.com/orgs/Captive-Studio/packages/container/mon-image/settings` et définissez le package comme publique dans la `Danger zone`.
+Pour cela, rendez-vous dans les setting du package `https://github.com/orgs/captive-studio/packages/container/mon-image/settings` et définissez le package comme publique dans la `Danger zone`.
 
 
 ### Etape 6
@@ -58,7 +58,7 @@ Pour cela, rendez-vous dans les setting du package `https://github.com/orgs/Capt
 Configurer renovate pour votre image :
 - Ajouter un fichier `preset.json` dans le dossier de votre image avec les règles renovate
 - Etendre ce preset dans la configuration renovate à la racine de ce projet
-- Ajouter votre image à la configuration renovate partagée dans le repo [renovate-config](https://github.com/Captive-Studio/renovate-config).
+- Ajouter votre image à la configuration renovate partagée dans le repo [renovate-config](https://github.com/captive-studio/renovate-config).
 
 > **A noter** : 
   Il est important d'attendre moins longtemps après une release que la configuration de base de renovate afin de fournir une image de la version au moment ou renovate passera sur le projet utilisant l'image.
