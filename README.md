@@ -18,6 +18,11 @@ ___
 
 [🔖 Versions](https://github.com/Captive-Studio/captive-images/pkgs/container/ruby-ci)
 
+### Actions Runner
+> Runner ARC (self-hosted GitHub Actions) basé sur `falcondev-oss/actions-runner`, avec `zstd` embarqué pour la compression du cache GitHub Actions. Évite l'installation de zstd au démarrage de chaque runner éphémère.
+
+[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/actions-runner)
+
 ___
 
 ## Ajouter une image
