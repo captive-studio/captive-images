@@ -1,8 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>Captive-Studio/renovate-config",
-    "github>Captive-Studio/captive-images//images/ruby-ci/preset.json",
-    "github>Captive-Studio/captive-images//images/ruby/preset.json"
+    "github>captive-studio/renovate-config",
+    "github>captive-studio/captive-images//images/ruby-ci/preset.json",
+    "github>captive-studio/captive-images//images/ruby/preset.json",
+    "github>captive-studio/captive-images//images/actions-runner/preset.json"
   ]
 }

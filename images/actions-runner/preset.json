@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "description": "actions-runner : suivre la base falcondev-oss (le workaround GHCR timestamp-optional est géré par preset/ghcr dans base)",
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["ghcr.io/falcondev-oss/actions-runner"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ]
+}

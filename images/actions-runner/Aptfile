@@ -1,0 +1,2 @@
+# Compression du cache GitHub Actions (le gha-cache-server self-hosted utilise zstd)
+zstd
