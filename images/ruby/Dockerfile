@@ -1,4 +1,4 @@
-FROM ruby:4.0.6-slim@sha256:2d11e46a6246fa830032437d333fe0944ef4024271a3bc3a580512ac82878110
+FROM ruby:4.0.6-slim@sha256:abd7528c4df35d151e2643d5efb845e442a26e36a4babc6459bee508619137a2
 
 COPY images/ruby/Aptfile /tmp/Aptfile
 
