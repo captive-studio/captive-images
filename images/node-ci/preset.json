@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "description": "Update upstream Node faster in captive-images",
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["node"],
+      "minimumReleaseAge": "1 day",
+      "internalChecksFilter": "strict"
+    },
+    {
+      "description": "Keep the pinned Playwright in sync with the projects consuming the image",
+      "matchDatasources": ["npm"],
+      "matchDepNames": ["playwright"],
+      "minimumReleaseAge": "1 day",
+      "internalChecksFilter": "strict"
+    }
+  ]
+}
