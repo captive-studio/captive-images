@@ -1,4 +1,4 @@
-FROM node:24.21.0-bookworm-slim
+FROM node:24.21.0-bookworm-slim@sha256:2fe369e969550cde8e867afc3fe370b260140cab4a23d467074295b42163d553
 
 # Chromium et ses dépendances système sont posés dans l'image plutôt qu'à chaque run : le
 # job d'accessibilité d'alveole-js passait 1 min 11 par exécution à les installer, sur un
