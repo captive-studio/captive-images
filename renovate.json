@@ -4,6 +4,7 @@
     "github>captive-studio/renovate-config",
     "github>captive-studio/captive-images//images/ruby-ci/preset.json",
     "github>captive-studio/captive-images//images/ruby/preset.json",
-    "github>captive-studio/captive-images//images/actions-runner/preset.json"
+    "github>captive-studio/captive-images//images/actions-runner/preset.json",
+    "github>captive-studio/captive-images//images/node-ci/preset.json"
   ]
 }

@@ -18,6 +18,15 @@ ___
 
 [🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/ruby-ci)
 
+## ![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
+### Node CI
+> Image Node pour la CI des projets JavaScript, avec Playwright et Chromium préinstallés. Évite de télécharger le navigateur et ses dépendances système à chaque job.
+
+[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/node-ci)
+
+## ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+
 ### Actions Runner
 > Runner ARC (self-hosted GitHub Actions) basé sur `falcondev-oss/actions-runner`, avec `zstd` embarqué pour la compression du cache GitHub Actions. Évite l'installation de zstd au démarrage de chaque runner éphémère.
 
