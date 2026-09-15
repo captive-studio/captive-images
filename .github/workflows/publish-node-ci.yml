@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - images/node-ci/Dockerfile
+      - images/node-ci/Aptfile
       - .github/workflows/publish-node-ci.yml
   workflow_dispatch:
 
