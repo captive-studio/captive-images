@@ -1,0 +1,14 @@
+# Outils que `node:lts` fournissait et que la base `slim` retire. Toute suppression ici est
+# une régression silencieuse chez les consommateurs de l'image : l'absence de curl a fait
+# échouer un smoke test pendant 240 s sans message lisible.
+
+# Clonage par actions/checkout, sans quoi il retombe sur l'API REST
+git
+# Certificats racine pour les téléchargements HTTPS
+ca-certificates
+# Interrogation des serveurs locaux dans les smoke tests
+curl
+# Décompression d'archives par certaines actions
+unzip
+# Fournit ps, attendu par des scripts de CI
+procps
