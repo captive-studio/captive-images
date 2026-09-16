@@ -9,10 +9,13 @@ RUN apt-get update && \
     node --version && npm --version && git --version && curl --version && \
     zstd --version && command -v unzip && command -v ps
 
-# La cible finale conserve le navigateur attendu par les utilisateurs de node-ci.
-FROM base AS browser
+# Variante dédiée aux tests navigateur et audits d’accessibilité.
+FROM base AS playwright
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
 # Cette version doit suivre celle des projets consommateurs (gérée par Renovate).
 RUN npx --yes playwright@1.63.0 install --with-deps chromium && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /root/.npm
+
+# Sans --target, construire le socle léger correspondant au nom node-ci.
+FROM base AS ci

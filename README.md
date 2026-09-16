@@ -20,22 +20,29 @@ ___
 
 ## ![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-### Node CI Base
-> Image Node pour les installations, lint, types et tests sans navigateur. Fournit les outils de `images/node-ci/Aptfile`, notamment Git, curl et zstd.
-
-[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/node-ci-base)
-
 ### Node CI
-> Étend le même socle que Node CI Base avec Playwright et Chromium préinstallés, pour les tests navigateur et les audits d’accessibilité. Le nom `node-ci` conserve ce comportement pour ses consommateurs actuels.
+> Image Node pour les installations, lint, types et tests sans navigateur. Fournit les outils de `images/node-ci/Aptfile`, notamment Git, curl et zstd.
 
 [🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/node-ci)
 
-Les deux images sont construites depuis `images/node-ci/Dockerfile` : cible `base`
-pour `node-ci-base`, cible `browser` (cible finale par défaut) pour `node-ci`.
-Elles partagent la version Node épinglée et le même Aptfile. Le workflow
-`publish-node-ci.yml` construit les deux cibles sur PR sans publication, puis
-publie les deux images après merge. Les consommateurs adoptent chaque image
-par son digest ; publier une image ne modifie pas leurs workflows.
+### Node CI Playwright
+> Étend le même socle avec Playwright et Chromium préinstallés, pour les tests navigateur et les audits d’accessibilité.
+
+[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/node-ci-playwright)
+
+Les deux images sont construites depuis `images/node-ci/Dockerfile` : cible `ci`
+(cible finale par défaut) pour `node-ci`, cible `playwright` pour
+`node-ci-playwright`. Elles partagent la version Node épinglée et le même
+Aptfile. Le workflow `publish-node-ci.yml` construit les deux cibles sur PR
+sans publication, puis publie les deux images après merge.
+
+**Migration :** `node-ci` contenait auparavant Chromium. Les jobs qui utilisent
+le navigateur doivent adopter `node-ci-playwright` et son digest publié.
+Les anciens digests restent associés à leur ancien contenu ; mettre à jour
+leur digest sous le nom `node-ci` adopte désormais la variante sans navigateur.
+Pour Alvéole, utiliser `node-ci` pour l’installation, les contrôles de sources
+et les tests unitaires, et `node-ci-playwright` pour le job web/accessibilité.
+La référence de Groove est migrée séparément, ultérieurement.
 
 ## ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
