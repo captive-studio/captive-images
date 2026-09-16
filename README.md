@@ -33,8 +33,9 @@ ___
 Les deux images sont construites depuis `images/node-ci/Dockerfile` : cible `ci`
 (cible finale par défaut) pour `node-ci`, cible `chromium` pour
 `node-ci-chromium`. Elles partagent la version Node épinglée et le même
-Aptfile. Le workflow `publish-node-ci.yml` construit les deux cibles sur PR
-sans publication, puis publie les deux images après merge.
+Aptfile. Le workflow `publish-node-ci.yml` construit et publie les deux images après
+merge sur `main`. Aucun build n’est lancé sur PR. Un lancement manuel sur
+`main` permet également de publier les images.
 
 **Migration :** `node-ci` contenait auparavant Chromium. Les jobs qui utilisent
 le navigateur doivent adopter `node-ci-chromium` et son digest publié.
