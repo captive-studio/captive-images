@@ -12,3 +12,5 @@ curl
 unzip
 # Fournit ps, attendu par des scripts de CI
 procps
+# Compression rapide des caches GitHub Actions (évite le repli gzip)
+zstd
