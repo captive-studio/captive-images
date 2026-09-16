@@ -23,8 +23,8 @@ jobs:
         include:
           - image: node-ci
             target: ci
-          - image: node-ci-playwright
-            target: playwright
+          - image: node-ci-chromium
+            target: chromium
     env:
       IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/${{ matrix.image }}
     runs-on: self-hosted

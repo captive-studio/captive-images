@@ -10,7 +10,7 @@ RUN apt-get update && \
     zstd --version && command -v unzip && command -v ps
 
 # Variante dédiée aux tests navigateur et audits d’accessibilité.
-FROM base AS playwright
+FROM base AS chromium
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
 # Cette version doit suivre celle des projets consommateurs (gérée par Renovate).

@@ -25,23 +25,23 @@ ___
 
 [🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/node-ci)
 
-### Node CI Playwright
+### Node CI Chromium
 > Étend le même socle avec Playwright et Chromium préinstallés, pour les tests navigateur et les audits d’accessibilité.
 
-[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/node-ci-playwright)
+[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/node-ci-chromium)
 
 Les deux images sont construites depuis `images/node-ci/Dockerfile` : cible `ci`
-(cible finale par défaut) pour `node-ci`, cible `playwright` pour
-`node-ci-playwright`. Elles partagent la version Node épinglée et le même
+(cible finale par défaut) pour `node-ci`, cible `chromium` pour
+`node-ci-chromium`. Elles partagent la version Node épinglée et le même
 Aptfile. Le workflow `publish-node-ci.yml` construit les deux cibles sur PR
 sans publication, puis publie les deux images après merge.
 
 **Migration :** `node-ci` contenait auparavant Chromium. Les jobs qui utilisent
-le navigateur doivent adopter `node-ci-playwright` et son digest publié.
+le navigateur doivent adopter `node-ci-chromium` et son digest publié.
 Les anciens digests restent associés à leur ancien contenu ; mettre à jour
 leur digest sous le nom `node-ci` adopte désormais la variante sans navigateur.
 Pour Alvéole, utiliser `node-ci` pour l’installation, les contrôles de sources
-et les tests unitaires, et `node-ci-playwright` pour le job web/accessibilité.
+et les tests unitaires, et `node-ci-chromium` pour le job web/accessibilité.
 La référence de Groove est migrée séparément, ultérieurement.
 
 ## ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
