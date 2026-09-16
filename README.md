@@ -30,12 +30,16 @@ ___
 
 [🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/node-ci-chromium)
 
-Les deux images sont construites depuis `images/node-ci/Dockerfile` : cible `ci`
-(cible finale par défaut) pour `node-ci`, cible `chromium` pour
-`node-ci-chromium`. Elles partagent la version Node épinglée et le même
-Aptfile. Le workflow `publish-node-ci.yml` construit et publie les deux images après
-merge sur `main`. Aucun build n’est lancé sur PR. Un lancement manuel sur
-`main` permet également de publier les images.
+Chaque image possède son Dockerfile et son workflow de publication.
+`images/node-ci-chromium/Dockerfile` hérite de l’image `node-ci` publiée,
+épinglée par version et digest, comme `rails-ci` hérite de `ruby-ci`.
+Les outils communs restent déclarés dans `images/node-ci/Aptfile`.
+
+Une publication de `node-ci` est détectée par Renovate, qui propose une mise
+à jour du `FROM` de `node-ci-chromium`. Le merge de cette mise à jour sur
+`main` déclenche la reconstruction et la publication de Chromium.
+Il n’y a pas de build sur PR. Les publications automatiques et manuelles
+sont limitées à `main`.
 
 **Migration :** `node-ci` contenait auparavant Chromium. Les jobs qui utilisent
 le navigateur doivent adopter `node-ci-chromium` et son digest publié.

@@ -1,20 +1,19 @@
-name: Publish node-ci
+name: Publish node-ci-chromium
 
 on:
   push:
     branches:
       - main
     paths:
-      - images/node-ci/Dockerfile
-      - images/node-ci/Aptfile
-      - .github/workflows/publish-node-ci.yml
+      - images/node-ci-chromium/Dockerfile
+      - .github/workflows/publish-node-ci-chromium.yml
   workflow_dispatch:
 
 jobs:
   build:
     if: github.ref == 'refs/heads/main'
     env:
-      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/node-ci
+      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/node-ci-chromium
     runs-on: self-hosted
     permissions:
       contents: read
@@ -40,9 +39,9 @@ jobs:
       - name: Detect image version
         id: version
         run: |
-          version=$(sed -n 's/^FROM node:\([^-@]*\).*$/\1/p' images/node-ci/Dockerfile)
+          version=$(sed -n 's/^FROM ghcr\.io\/captive-studio\/node-ci:\([^@]*\).*$/\1/p' images/node-ci-chromium/Dockerfile)
           if [ -z "$version" ]; then
-            echo "Unable to detect node-ci version from images/node-ci/Dockerfile" >&2
+            echo "Unable to detect node-ci-chromium version from images/node-ci-chromium/Dockerfile" >&2
             exit 1
           fi
           echo "value=$version" >> "$GITHUB_OUTPUT"
@@ -61,7 +60,7 @@ jobs:
         uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
         with:
           context: .
-          file: images/node-ci/Dockerfile
+          file: images/node-ci-chromium/Dockerfile
           platforms: linux/amd64
           push: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
           tags: ${{ steps.meta.outputs.tags }}
