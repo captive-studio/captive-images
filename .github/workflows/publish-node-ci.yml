@@ -8,11 +8,6 @@ on:
       - images/node-ci/Dockerfile
       - images/node-ci/Aptfile
       - .github/workflows/publish-node-ci.yml
-  pull_request:
-    paths:
-      - images/node-ci/Dockerfile
-      - images/node-ci/Aptfile
-      - .github/workflows/publish-node-ci.yml
   workflow_dispatch:
 
 jobs:
