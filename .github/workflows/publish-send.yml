@@ -1,0 +1,96 @@
+name: Publish send
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - images/send/Dockerfile
+      - .github/workflows/publish-send.yml
+  # Construit sans publier : une montée de Node ou de Send doit prouver que l'image se
+  # construit avant d'être mergée.
+  pull_request:
+    paths:
+      - images/send/Dockerfile
+      - .github/workflows/publish-send.yml
+  workflow_dispatch:
+
+jobs:
+  build:
+    env:
+      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/send
+      PUBLISH: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+    runs-on: self-hosted
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+        with:
+          driver-opts: network=host
+
+      - name: Log in to GHCR
+        if: env.PUBLISH == 'true'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Detect image version
+        id: version
+        run: |
+          version=$(sed -n 's/^ARG SEND_VERSION=\(.*\)$/\1/p' images/send/Dockerfile)
+          if [ -z "$version" ]; then
+            echo "Unable to detect send version from images/send/Dockerfile" >&2
+            exit 1
+          fi
+          echo "value=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=${{ steps.version.outputs.value }}
+            type=raw,value=latest
+            type=sha,prefix=sha-
+
+      - name: Build image
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: images/send/Dockerfile
+          platforms: linux/amd64
+          push: ${{ env.PUBLISH == 'true' }}
+          # En PR, l'image est chargée dans le démon local pour le test de démarrage.
+          load: ${{ env.PUBLISH != 'true' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          annotations: ${{ steps.meta.outputs.annotations }}
+
+      # Le serveur tourne sur un Node plus récent que celui que Send déclare (^16.13) : prouver
+      # qu'il démarre et charge ses dépendances. Sans Redis, il écoute quand même et
+      # /__lbheartbeat__ répond 200.
+      - name: Smoke test
+        if: env.PUBLISH != 'true'
+        run: |
+          image="${IMAGE_NAME}:${{ steps.version.outputs.value }}"
+          docker run --rm "$image" node --version
+          docker run -d --name send-smoke --network host -e NODE_ENV=production "$image"
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:1443/__lbheartbeat__; then
+              docker rm -f send-smoke
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs send-smoke
+          docker rm -f send-smoke
+          exit 1

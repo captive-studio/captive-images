@@ -30,6 +30,13 @@ ___
 
 [🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/node-ci-chromium)
 
+## Applications
+
+### Send
+> [Send](https://gitlab.com/timvisee/send) reconstruit sur un Node maintenu, pour le service de transfert de fichiers de captive-platform (`platform/transfert/`). L'image amont repose sur Node 16 : seul le build du front y reste, dans une étape jetable. Les PR construisent l'image et vérifient que le serveur démarre, sans la publier.
+
+[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/send)
+
 Chaque image possède son Dockerfile et son workflow de publication.
 `images/node-ci-chromium/Dockerfile` hérite de l’image `node-ci` publiée,
 épinglée par version et digest, comme `rails-ci` hérite de `ruby-ci`.
