@@ -1,4 +1,2 @@
 # Compression du cache GitHub Actions (le gha-cache-server self-hosted utilise zstd)
 zstd
-# Compilation des gems à extension native (bigdecimal, etc.) quand le cache bundler est froid
-build-essential
