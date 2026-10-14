@@ -2,14 +2,16 @@
 #
 # L'image amont tourne sur node:16.13-alpine3.13, sans correctifs de sécurité depuis 2023, et
 # Send n'a plus de release depuis juillet 2025. Le serveur n'utilise que des dépendances en
-# JavaScript pur : il tourne ici sur Node 24. Seul le build du front (webpack 4.38, qui exige
-# l'OpenSSL de Node 16) reste en Node 16, dans une étape jetable jamais exposée.
+# JavaScript pur : il tourne ici sur Node 22 (LTS jusqu'en avril 2027). Pas au-delà : intel,
+# la bibliothèque de logs de mozlog, appelle util.isError, retiré en Node 23 (test de démarrage
+# de la PR #134). Seul le build du front (webpack 4.38, qui exige l'OpenSSL de Node 16) reste en
+# Node 16, dans une étape jetable jamais exposée.
 
 # renovate: datasource=gitlab-tags depName=timvisee/send
 ARG SEND_VERSION=v3.4.27
 
 # Source au tag. Le .git reste : le build du front y lit la version (git-rev-sync).
-FROM node:24.21.0-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 AS source
+FROM node:22.23.3-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 AS source
 ARG SEND_VERSION
 RUN apk add --no-cache git && \
     git clone --depth 1 --branch "${SEND_VERSION}" https://gitlab.com/timvisee/send.git /src
@@ -23,13 +25,13 @@ RUN PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm ci && npm run build
 
 # Dépendances de production, installées par le Node qui les exécutera. git : configstore est
 # tiré d'un dépôt GitHub.
-FROM node:24.21.0-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 AS deps
+FROM node:22.23.3-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 AS deps
 RUN apk add --no-cache git
 WORKDIR /app
 COPY --from=source /src/package.json /src/package-lock.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
-FROM node:24.21.0-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1
+FROM node:22.23.3-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
 WORKDIR /app
 COPY --from=deps /app/node_modules node_modules
 COPY --from=source /src/package.json ./

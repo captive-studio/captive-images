@@ -17,6 +17,20 @@
       ],
       "matchCurrentVersion": "/^16\\./",
       "allowedVersions": "/^16\\./"
+    },
+    {
+      "description": "Le serveur de Send ne démarre pas au-delà de Node 22 (util.isError, retiré en Node 23) : ne pas le monter de majeure",
+      "matchFileNames": [
+        "images/send/Dockerfile"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchDepNames": [
+        "node"
+      ],
+      "matchCurrentVersion": "/^22\\./",
+      "allowedVersions": "/^22\\./"
     }
   ]
 }

@@ -33,7 +33,7 @@ ___
 ## Applications
 
 ### Send
-> [Send](https://gitlab.com/timvisee/send) reconstruit sur un Node maintenu, pour le service de transfert de fichiers de captive-platform (`platform/transfert/`). L'image amont repose sur Node 16 : seul le build du front y reste, dans une étape jetable. Les PR construisent l'image et vérifient que le serveur démarre, sans la publier.
+> [Send](https://gitlab.com/timvisee/send) reconstruit sur un Node maintenu, pour le service de transfert de fichiers de captive-platform (`platform/transfert/`). L'image amont repose sur Node 16 : le serveur tourne ici sur Node 22, et seul le build du front reste en Node 16, dans une étape jetable. Les PR construisent l'image et vérifient que le serveur démarre, sans la publier.
 
 [🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/send)
 
