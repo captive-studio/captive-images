@@ -1,4 +1,4 @@
-FROM ghcr.io/captive-studio/node-ci:24.21.0@sha256:313ba37a08d6a83a387df27abca403ea83ccdc30cbdb3c0b122c7eba6ef9f3f4
+FROM ghcr.io/captive-studio/node-ci:24.22.0@sha256:2bb3afc1bc50472f50bfc8fbc638f2add3ccb4891ce48e653512c2769538018f
 
 # Les outils CI sont hérités de node-ci ; ses mises à jour passent par Renovate.
 ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
