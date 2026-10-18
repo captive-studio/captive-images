@@ -1,5 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "description": "Track the Playwright version installed by a RUN instruction, invisible to the dockerfile manager",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)images/node-ci-chromium/Dockerfile$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\s+ARG \\S+=(?<currentValue>\\S+)"
+      ]
+    }
+  ],
   "packageRules": [
     {
       "description": "Keep the Chromium image aligned with the published Node CI base",
