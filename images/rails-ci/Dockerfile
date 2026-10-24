@@ -1,4 +1,4 @@
-FROM ghcr.io/captive-studio/ruby-ci:4.0.7@sha256:224b25b56cb4817abb979918ddcedad8da1da33563c20cc523af35fdf4d422b2
+FROM ghcr.io/captive-studio/ruby-ci:4.0.9@sha256:a645ec3679691eab412aedd49b7ad6888e2b1b6cf633319f63b2038a37277cba
 
 COPY images/rails-ci/Aptfile /tmp/Aptfile
 
