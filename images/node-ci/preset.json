@@ -1,5 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "description": "Track the corepack version installed by a RUN instruction, invisible to the dockerfile manager",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/(^|/)images/node-ci/Dockerfile$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\s+ARG \\S+=(?<currentValue>\\S+)"
+      ]
+    }
+  ],
   "packageRules": [
     {
       "description": "Update upstream Node faster in captive-images",
@@ -8,6 +20,17 @@
       ],
       "matchDepNames": [
         "node"
+      ],
+      "minimumReleaseAge": "1 day",
+      "internalChecksFilter": "strict"
+    },
+    {
+      "description": "Keep the pinned corepack current",
+      "matchDatasources": [
+        "npm"
+      ],
+      "matchDepNames": [
+        "corepack"
       ],
       "minimumReleaseAge": "1 day",
       "internalChecksFilter": "strict"
