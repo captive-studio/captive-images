@@ -18,6 +18,21 @@ ___
 
 [🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/ruby-ci)
 
+### Rails CI
+> Étend Ruby CI avec les outils d’analyse Rails (Brakeman) et Chromium (Chrome for Testing installé par Playwright), pour les tests système et la génération de PDF avec Ferrum.
+
+[🔖 Versions](https://github.com/captive-studio/captive-images/pkgs/container/rails-ci)
+
+Le paquet apt `chromium` d’Ubuntu n’est qu’une transition vers snap,
+inutilisable sans snapd : Chromium est installé par
+`npx playwright install --with-deps chromium`, à la même version de Playwright
+que `node-ci-chromium` (suivie par Renovate). Node, nécessaire au seul
+installeur, est monté depuis l’image `node` pendant le build et n’est pas
+conservé dans l’image.
+
+`BROWSER_PATH` pointe vers `/usr/local/bin/chromium`, un lien fixe vers le
+binaire du dossier Playwright versionné : Ferrum le lit sans configuration.
+
 ## ![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
 ### Node CI
