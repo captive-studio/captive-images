@@ -26,7 +26,7 @@ USER root
 # Cette version suit celle de node-ci-chromium : Renovate la repère
 # grâce au commentaire ci-dessous (customManagers de preset.json).
 # renovate: datasource=npm depName=playwright
-ARG PLAYWRIGHT_VERSION=1.65.0
+ARG PLAYWRIGHT_VERSION=1.65.1
 RUN --mount=type=bind,from=node,source=/usr/local,target=/opt/node \
     export PATH=/opt/node/bin:$PATH && \
     npx --yes playwright@${PLAYWRIGHT_VERSION} install --with-deps chromium && \
