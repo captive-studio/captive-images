@@ -1,5 +1,10 @@
 FROM node:26.13.1-bookworm-slim@sha256:5df79989ed685e09f0a98019db4cebfb22fb9df1a53c0161664a011f7ff6b0f1
 
+# Le runner ARC transmet HTTP(S)_PROXY au conteneur de job, mais pas NODE_USE_ENV_PROXY :
+# sans elle, Node 24 ignore le proxy et les actions JavaScript (create-github-app-token)
+# refusent de démarrer. Sans proxy, la variable n'a aucun effet.
+ENV NODE_USE_ENV_PROXY=1
+
 # Node ne livre plus corepack depuis la 25 : les projets en ont besoin pour lancer
 # le gestionnaire de paquets déclaré par leur champ packageManager.
 # renovate: datasource=npm depName=corepack
