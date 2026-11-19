@@ -1,4 +1,4 @@
-FROM cimg/ruby:4.0.9@sha256:c8d0b268a6249b596916fb1d5ce2df08cee679d7ef1ae3c5da0504c5ae9258f7
+FROM cimg/ruby:4.0.10@sha256:26187037bb690946eb920f0091ef19d575e2ea51e1b82fcdd8d4aa70474b3d9c
 
 # Le runner ARC transmet HTTP(S)_PROXY au conteneur de job, mais pas NODE_USE_ENV_PROXY :
 # sans elle, Node 24 ignore le proxy et les actions JavaScript (create-github-app-token)
