@@ -2,7 +2,7 @@
 # sans être copié, et ne reste donc pas dans l'image finale.
 FROM node:26.13.1-bookworm-slim@sha256:5df79989ed685e09f0a98019db4cebfb22fb9df1a53c0161664a011f7ff6b0f1 AS node
 
-FROM ghcr.io/captive-studio/ruby-ci:4.0.9@sha256:3b9447c0f46a9576bef552c4f512eafb8f0bf5592ab87ae59283cc4e9b6ae176
+FROM ghcr.io/captive-studio/ruby-ci:4.0.10
 
 COPY --chown=circleci:circleci \
   images/rails-ci/Gemfile \
