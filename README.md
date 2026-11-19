@@ -33,6 +33,10 @@ conservé dans l’image.
 `BROWSER_PATH` pointe vers `/usr/local/bin/chromium`, un lien fixe vers le
 binaire du dossier Playwright versionné : Ferrum le lit sans configuration.
 
+### Monter Ruby
+
+Merger ici d'abord et attendre `Publish ruby` et `Publish ruby-ci`. `Publish rails-ci` se relance seul après `Publish ruby-ci`, dont il dépend. Mettre à jour les dépôts consommateurs ensuite.
+
 ## ![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
 ### Node CI
