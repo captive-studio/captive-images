@@ -9,6 +9,11 @@ on:
       - images/rails-ci/Gemfile
       - images/rails-ci/Gemfile.lock
       - .github/workflows/publish-rails-ci.yml
+  # Une nouvelle image ruby-ci (montée de Ruby) doit être publiée avant de reconstruire rails-ci dessus.
+  workflow_run:
+    workflows: [Publish ruby-ci]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 env:
@@ -16,6 +21,7 @@ env:
 
 jobs:
   publish:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: self-hosted
     permissions:
       contents: read
@@ -47,7 +53,22 @@ jobs:
           fi
           echo "value=$version" >> "$GITHUB_OUTPUT"
 
+      # Push qui monte aussi ruby-ci : l'image de base n'existe pas encore,
+      # le déclencheur workflow_run reconstruira rails-ci une fois ruby-ci publié.
+      - name: Check base image
+        id: base
+        env:
+          BASE_IMAGE: ghcr.io/${{ github.repository_owner }}/ruby-ci:${{ steps.version.outputs.value }}
+        run: |
+          if docker buildx imagetools inspect "$BASE_IMAGE" >/dev/null 2>&1; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::$BASE_IMAGE pas encore publiée : rails-ci sera publiée après « Publish ruby-ci »."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Extract metadata
+        if: steps.base.outputs.ready == 'true'
         id: meta
         uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
         with:
@@ -58,6 +79,7 @@ jobs:
             type=sha,prefix=sha-
 
       - name: Build and push
+        if: steps.base.outputs.ready == 'true'
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
