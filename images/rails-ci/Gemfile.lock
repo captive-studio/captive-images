@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    brakeman (8.1.0)
+    brakeman (8.1.1)
       racc
     racc (1.8.1)
 
@@ -10,10 +10,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  brakeman (= 8.1.0)
+  brakeman (= 8.1.1)
 
 CHECKSUMS
-  brakeman (8.1.0) sha256=cfa9e5214e4925842f4bc849a64f8a7e6c5d0425fe98eac8d7b7bc60fdc17e07
+  brakeman (8.1.1) sha256=a038d25ef911be910171222d2355e11ff5b5048cc4e2f08e7a4c11eccd4f418a
   bundler (4.0.16) sha256=d6ca5dd440c24f9abce9844cf44cc8e18c6a553de65a47efb4544137af92c47d
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
 
