@@ -28,7 +28,7 @@ GEM
       zeitwerk (~> 2.6)
     dry-inflector (1.3.1)
     dry-initializer (3.2.0)
-    dry-logic (1.6.0)
+    dry-logic (1.6.1)
       bigdecimal
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.1)
@@ -54,12 +54,12 @@ GEM
       path_expander (~> 2.0)
       prism (>= 1.9, < 3)
       sexp_processor (~> 4.0)
-    flog (4.9.4)
+    flog (4.10.0)
       path_expander (~> 2.0)
-      prism (~> 1.7)
+      prism (>= 1.9, < 3)
       sexp_processor (~> 4.8)
     ice_nine (0.11.2)
-    json (3.1.0)
+    json (3.2.0)
     language_server-protocol (3.17.0.6)
     launchy (3.1.1)
       addressable (~> 2.8)
@@ -73,7 +73,8 @@ GEM
       ast (~> 2.4.1)
       racc
     path_expander (2.0.1)
-    prism (1.9.0)
+    prism (2.1.0)
+    prism (2.1.0-arm64-darwin)
     public_suffix (7.0.5)
     racc (1.8.1)
     rainbow (3.1.1)
@@ -96,7 +97,7 @@ GEM
       rubocop-ast (>= 1.49.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.53.0)
+    rubocop-ast (1.54.0)
       ast (~> 2.4)
       parser (>= 3.3.7.2)
       prism (>= 1.7)
@@ -157,14 +158,14 @@ CHECKSUMS
   dry-core (1.2.0) sha256=0cc5a7da88df397f153947eeeae42e876e999c1e30900f3c536fb173854e96a1
   dry-inflector (1.3.1) sha256=7fb0c2bb04f67638f25c52e7ba39ab435d922a3a5c3cd196120f63accb682dcc
   dry-initializer (3.2.0) sha256=37d59798f912dc0a1efe14a4db4a9306989007b302dcd5f25d0a2a20c166c4e3
-  dry-logic (1.6.0) sha256=da6fedbc0f90fc41f9b0cc7e6f05f5d529d1efaef6c8dcc8e0733f685745cea2
+  dry-logic (1.6.1) sha256=3cea14d2108b62f1a99d20b993dff3a5c365136a3995202fd33d9a163baedd31
   dry-schema (1.17.0) sha256=404b448f4266998795b88edcd9f5dc51af798d8b3831cc6f60da5a1af8d5faa1
   dry-types (1.9.2) sha256=c52d3d6bdb0269fc299c44a7d9d5fcd736a63b393e2459b38728d9736b7df164
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   flay (2.14.5) sha256=2f6c97ade18eacc87dabdc8a1a2fa5cbd80b84eb0e290cea7af257ac0801a206
-  flog (4.9.4) sha256=12cc054fab7a2cbd2a906514397c4d7788954d530564782d6f14939dc2dfbcbb
+  flog (4.10.0) sha256=2343b36f8cbd7bf0c1236a5669eb9a38e2ea8f92f5a02bfd79585be5c55a1a40
   ice_nine (0.11.2) sha256=5d506a7d2723d5592dc121b9928e4931742730131f22a1a37649df1c1e2e63db
-  json (3.1.0) sha256=3ce7ccf8fde58960177a3a756c31f292a4c1e1dedee884547096a5b0604e3bd8
+  json (3.2.0) sha256=4a4e222a9ee6ffb296ab3171b6b39d85fec83afc4e7b57eee17edf68c74aec87
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
   launchy (3.1.1) sha256=72b847b5cc961589dde2c395af0108c86ff0119f42d4648d25b5440ebb10059e
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
@@ -173,7 +174,8 @@ CHECKSUMS
   parallel (2.3.0) sha256=f75a3e904101ce6a1ccb6b8dc800cbafd42166d83330192438dcf29395167a6f
   parser (3.3.14.0) sha256=62f8f76af7b919425ee2d811880e9dcb8011ab40bfd59970dfb583141697e58f
   path_expander (2.0.1) sha256=2de201164bff4719cc4d0b3767286e9977cc832a59c4d70abab571ec86cb41e4
-  prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
+  prism (2.1.0) sha256=1c0a7c6dea0e93183390fb123f007564dbe663198e2f86ad87204151147601f3
+  prism (2.1.0-arm64-darwin) sha256=2d0c2e3e011cfd89c041940907d3ff3def379d7b0f2ba158d1d42238e8ad8afc
   public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
@@ -181,7 +183,7 @@ CHECKSUMS
   regexp_parser (2.13.4) sha256=1d0547814f57e6f00946957bd0ca201bc42f42cfb08eee89df60998aedcd8a3b
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
   rubocop (1.92.3) sha256=fd77feac46e8e91c3a534f868a1702c59f5bf8173515fd00a3c6ce1198672ff6
-  rubocop-ast (1.53.0) sha256=027984d28485d6502ae4c72f9341080f54f538599f5dbb54f81875a4ddcad574
+  rubocop-ast (1.54.0) sha256=11f7cadec54e593e905b1bb78f2b28bdd4b8e13b34cb82fe49c876e3dd5008c1
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   ruby_parser (3.22.0) sha256=1eb4937cd9eb220aa2d194e352a24dba90aef00751e24c8dfffdb14000f15d23
   rubycritic (5.0.0) sha256=7f3877556d7f52bf0980496b7c907a827a9592ba690b80a593403a60bd6cfb42
